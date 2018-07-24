@@ -4,9 +4,15 @@ import * as BooksAPI from './BooksAPI'
 
 class Books extends React.Component {
 
-
+    state = {
+        value: "none"
+    }
     
-    render() {
+    changeShelf = (event) => {
+        this.setState({value: event.target.value});
+    }
+
+    render() {    
 
         return (
 
@@ -17,7 +23,7 @@ class Books extends React.Component {
                             <div className="book-top" style={{backgroundImage: `url(${ book.imageLinks.thumbnail })`}}>
                                          
                             <div className="book-shelf-changer">
-                                     <select>
+                            <select onChange={this.changeShelf} value={this.state.value}>
                                      <option value="move" disabled>Move to...</option>
                                      <option value="currentlyReading">Currently Reading</option>
                                      <option value="wantToRead">Want to Read</option>
