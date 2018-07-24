@@ -3,6 +3,9 @@ import * as BooksAPI from './BooksAPI'
 
 
 class Books extends React.Component {
+
+
+    
     render() {
 
         return (
@@ -11,9 +14,8 @@ class Books extends React.Component {
                 {this.props.books.map((book) => (
                     <li key={book.id} className='book-list-item'>
                         <div className="book">
-                            <div className="book-top">
-                            <div className="book-cover" style={{backgroundImage: `url(${ book.imageLinks.thumbnail })`}}/>
-                            
+                            <div className="book-top" style={{backgroundImage: `url(${ book.imageLinks.thumbnail })`}}>
+                                         
                             <div className="book-shelf-changer">
                                      <select>
                                      <option value="move" disabled>Move to...</option>

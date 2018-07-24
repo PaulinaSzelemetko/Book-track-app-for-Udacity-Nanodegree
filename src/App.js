@@ -5,6 +5,17 @@ import Books from './Books'
 
 class BooksApp extends React.Component {
   state = {
+    shelfs: {
+      currentlyReading: {
+          label: 'Currently Reading'
+      },
+      wantToRead: {
+          label: 'Want to Read'
+      },
+      read: {
+          label: 'Read'
+      }
+  },
     books: []
   }
 
@@ -14,6 +25,11 @@ class BooksApp extends React.Component {
       console.log(books);
     })
 
+  }
+  
+
+  shelfBooks = (book) => {
+    this.setState()
   }
 
   render() {
