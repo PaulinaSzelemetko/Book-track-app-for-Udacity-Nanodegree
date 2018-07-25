@@ -1,7 +1,8 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import Books from './Books'
+import BooksCategories from './BooksCategories'
+
 
 class BooksApp extends React.Component {
   state = {
@@ -19,10 +20,23 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Books
-            books={this.state.books}/>
+        <BooksCategories
+            currentlyReading={this.state.books.filter((book => book.shelf === "currentlyReading"))}
+            read={this.state.books.filter((book => book.shelf === "read"))}
+            wantToRead={this.state.books.filter((book => book.shelf === "wantToRead"))}
+            />
       </div>
     )
+  }
+
+  onBookUpdate = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(() => {
+      let newBook = book
+      newBook.shelf = shelf
+      // remove book from state
+      // add the updated book to state
+      this.setState((prevState) => ({ books: prevState.books.filter(b => b.id !== book.id).concat(newBook) }))
+    })
   }
 }
 

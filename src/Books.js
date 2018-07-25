@@ -1,16 +1,25 @@
 import React, { Component } from 'react'
+import './App.css'
 import * as BooksAPI from './BooksAPI'
+import BooksCategories from './BooksCategories'
 
 
 class Books extends React.Component {
 
-    state = {
-        value: "none"
-    }
+    constructor(props) {
+        super(props);
+        this.state = {value: 'none'};
     
-    changeShelf = (event) => {
+        this.handleChange = this.handleChange.bind(this);
+        
+      }
+
+      handleChange(event) {
         this.setState({value: event.target.value});
-    }
+        console.log(this);
+      }
+
+    
 
     render() {    
 
@@ -23,7 +32,7 @@ class Books extends React.Component {
                             <div className="book-top" style={{backgroundImage: `url(${ book.imageLinks.thumbnail })`}}>
                                          
                             <div className="book-shelf-changer">
-                            <select onChange={this.changeShelf} value={this.state.value}>
+                            <select value={this.state.value} onChange={this.handleChange}>
                                      <option value="move" disabled>Move to...</option>
                                      <option value="currentlyReading">Currently Reading</option>
                                      <option value="wantToRead">Want to Read</option>
