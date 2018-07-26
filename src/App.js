@@ -2,6 +2,7 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BooksCategories from './BooksCategories'
+import Books from './Books'
 
 
 class BooksApp extends React.Component {
@@ -25,6 +26,8 @@ class BooksApp extends React.Component {
             read={this.state.books.filter((book => book.shelf === "read"))}
             wantToRead={this.state.books.filter((book => book.shelf === "wantToRead"))}
             />
+        <Books
+          books={this.state.books}/>
       </div>
     )
   }
