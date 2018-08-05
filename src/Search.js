@@ -19,10 +19,22 @@ class Search extends React.Component {
           this.setState({ books: [] });
         } else {
           books = books.concat(data);
+          books = books.map((book) => this.setShelf(book));
           this.setState({ books: books });
         }
       })
     }
+  }
+
+  setShelf = (searchBook) => {
+    for(let i = 0; i < this.props.books.length; i++) {
+      if(searchBook.id === this.props.books[i].id) {
+        searchBook.shelf = this.props.books[i].shelf;
+        return searchBook;
+      }
+    }
+    searchBook.shelf = 'none';
+    return searchBook;
   }
 
   render() {
