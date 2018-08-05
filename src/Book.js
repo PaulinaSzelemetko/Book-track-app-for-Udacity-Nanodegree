@@ -13,7 +13,7 @@ const book = (props) => {
 
         <div className="book" id={book.id}>
             <div className="book-top">
-                <div className="book-cover" style={{backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>          
+                <div className="book-cover" style={{backgroundImage: `url("${book.imageLinks ? book.imageLinks.thumbnail : window.location.protocol + '//' + window.location.host +'/img/default-cover.png' }")` }}></div>          
                 <div className="book-shelf-changer">
                     <select value={book.shelf} onChange={onBookUpdate}>
                         <option value="move" disabled>Move to...</option>
